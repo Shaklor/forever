@@ -1,4 +1,5 @@
 import { APLRotation } from '@generated/proto/apl';
+import { Spec } from '@generated/proto/common';
 import { makePlayer } from '@testing/apl/player';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -11,6 +12,19 @@ vi.mock('@i18n/config', () => ({ default: { t: (key: string) => key } }));
 const player = (): any => makePlayer(APLRotation.create());
 
 describe('kind options includeIf', () => {
+	it.each([
+		[Spec.SpecElementalShaman, false, true],
+		[Spec.SpecElementalShaman, true, false],
+		[Spec.SpecBalanceDruid, false, false],
+	])('auto values for spec %s during prepull %s are visible = %s', (spec, isPrepull, visible) => {
+		const subject = player();
+		subject.getSpec = () => spec;
+		const options = valueKindOptions(subject, isPrepull, false).map(option => option.value);
+		for (const kind of ['autoTimeToNext', 'autoSwingTime', 'autoTimeSinceLast']) {
+			expect(options.includes(kind as (typeof options)[number])).toBe(visible);
+		}
+	});
+
 	it.each<[string, (isPrepull: boolean) => Array<{ value: string }>, string]>([
 		['valueKindOptions', isPrepull => valueKindOptions(player(), isPrepull, false), 'currentTime'],
 		['actionKindOptions', isPrepull => actionKindOptions(player(), isPrepull), 'multidot'],
