@@ -1,3 +1,4 @@
+import * as BuffDebuffInputs from '@features/settings/model/buffs_debuffs';
 import * as OtherInputs from '@features/settings/model/other_inputs';
 import { APLRotation } from '@generated/proto/apl';
 import { ItemSlot, PseudoStat, Spec, Stat } from '@generated/proto/common';
@@ -79,7 +80,13 @@ export default defineSpec<Spec.SpecElementalShaman>({
 	// IconInputs to include in the 'Player' section on the settings tab.
 	playerIconInputs: [],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
-	includeBuffDebuffInputs: [Stat.StatFireDamage],
+	includeBuffDebuffInputs: [
+		Stat.StatFireDamage,
+		BuffDebuffInputs.StrengthOfEarthTotem,
+		BuffDebuffInputs.GraceOfAirTotem,
+		BuffDebuffInputs.WindfuryTotem,
+		BuffDebuffInputs.FlametongueTotem,
+	],
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
