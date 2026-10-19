@@ -36,10 +36,9 @@ func NewElementalShaman(character *core.Character, options *proto.Player) *Eleme
 		Shaman: shaman.NewShaman(character, options.TalentsString, selfBuffs),
 	}
 
-	//Some spells use weapon damage (Unleash Wind, ...)
 	ele.EnableAutoAttacks(ele, core.AutoAttackOptions{
 		MainHand:       ele.WeaponFromMainHand(),
-		AutoSwingMelee: false,
+		AutoSwingMelee: true,
 	})
 
 	return ele
