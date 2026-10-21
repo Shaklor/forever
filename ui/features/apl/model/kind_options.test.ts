@@ -15,7 +15,8 @@ describe('kind options includeIf', () => {
 	it.each([
 		[Spec.SpecElementalShaman, false, true],
 		[Spec.SpecElementalShaman, true, false],
-		[Spec.SpecBalanceDruid, false, false],
+		[Spec.SpecBalanceDruid, false, true],
+		[Spec.SpecBalanceDruid, true, false],
 	])('auto values for spec %s during prepull %s are visible = %s', (spec, isPrepull, visible) => {
 		const subject = player();
 		subject.getSpec = () => spec;

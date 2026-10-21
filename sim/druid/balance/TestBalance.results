@@ -73,7 +73,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 1.39963
+  weights: 1.4009
   weights: 0.67078
   weights: 1.0842
   weights: 0
@@ -1184,9 +1184,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Average-Default"
  value: {
-  dps: 829.92109
-  tps: 591.62586
-  dtps: 4.91106
+  dps: 829.92162
+  tps: 591.62619
+  dtps: 4.91065
  }
 }
 dps_results: {

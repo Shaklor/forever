@@ -172,10 +172,7 @@ function inputBuilder<T extends APLValueImplType>(config: ValueKindModel<T>): Va
 	return config;
 }
 
-const includeAutoValue = (player: Player<any>, isPrepull: boolean) => {
-	const spec = player.getSpec();
-	return !isPrepull && spec !== Spec.SpecBalanceDruid;
-};
+const includeAutoValue = (_player: Player<any>, isPrepull: boolean) => !isPrepull;
 
 export const valueKinds: { [f in ValidAPLValueKind]: ValueKindModel<APLValueImplMap[f]> } = {
 	// Operators

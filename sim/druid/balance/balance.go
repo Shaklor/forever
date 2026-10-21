@@ -35,6 +35,11 @@ func NewBalanceDruid(character *core.Character, options *proto.Player) *BalanceD
 		moonkin.StartingForm = druid.Humanoid
 	}
 
+	moonkin.EnableAutoAttacks(moonkin, core.AutoAttackOptions{
+		MainHand:       moonkin.WeaponFromMainHand(),
+		AutoSwingMelee: true,
+	})
+
 	moonkin.SelfBuffs.InnervateTarget = &proto.UnitReference{}
 	if balanceOptions.Options.ClassOptions.InnervateTarget != nil {
 		moonkin.SelfBuffs.InnervateTarget = balanceOptions.Options.ClassOptions.InnervateTarget
